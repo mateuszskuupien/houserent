@@ -1,0 +1,792 @@
+/* --------------------------------------
+   1. RESET & GLOBAL STYLES
+-------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  background: #111;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+  font-weight: 100;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+h2, p {
+  font-family: 'Lato', sans-serif;
+  font-weight: 100;
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+.scrollToTopBtn {
+  font-family: 'Inter', sans-serif;
+  font-weight: 100;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* --------------------------------------
+ 2. BUTTON STYLES
+-------------------------------------- */
+button {
+  padding: 1rem 3rem;
+  background: rgba(66, 66, 66, 0.7);
+  font-size: 1.125rem;
+  letter-spacing: 1.2px;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  position: relative;
+}
+
+button:hover {
+  background: #1f1b18;
+  transition: background-color 0.8s ease;
+}
+
+/* --------------------------------------
+ 3. SCROLL TO TOP BUTTON
+-------------------------------------- */
+.scrollToTopBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 0.625rem 1.25rem;
+  background: none;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.scrollToTopBtn:hover {
+  background-color: #555555;
+}
+
+/* --------------------------------------
+ 4. SECTION LAYOUT
+-------------------------------------- */
+.section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  flex-wrap: wrap;
+}
+.section-heading {
+  display: inline-block;
+  position: relative;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.section-heading::after {
+  content: "";
+  position: absolute;
+  bottom: -5px; /* odległość od tekstu */
+  left: 0;
+  width: 0%; /* linia zaczyna się od 0% */
+  height: 3px;
+  background: linear-gradient(to right, #d9dacc, #B2A496); /* kolor linii */
+  transition: width 1s ease; /* linia wjeżdża wolniej (1s zamiast 0.5s) */
+  border-radius: 2px;
+}
+
+.section-heading.visible::after {
+  width: 75%; /* linia ma 75% szerokości nagłówka */
+}
+
+.reveal {
+  opacity: 0;
+  background-color: #000;
+  transition: opacity 1.5s ease-in-out, background-color 0.8s ease-in-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  background-color: transparent;
+}
+
+.separator {
+  height: 30px;
+  background: linear-gradient(to right, #111, #222, #111);
+  width: 100%;
+}
+
+/* --------------------------------------
+ 5. TEXT & IMAGE CONTAINERS
+-------------------------------------- */
+.section .text,
+.section .image-container {
+  width: 50%;
+  height: 100%;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(to bottom, #555555, #3f3f3f);
+  color: whitesmoke;
+  font-size: 1.5rem;
+  text-align: right;
+  line-height: 4rem;
+  letter-spacing: 4px;
+  overflow: hidden;
+}
+.text-wrapper h2{
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.text-wrapper {
+  padding: 3rem;
+  margin-bottom: 5rem;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* --------------------------------------
+ 6. BACKGROUND IMAGES & SECTIONS
+-------------------------------------- */
+.first,
+.second,
+.third,
+.fourth,
+.fifth,
+.contact {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.first {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('/static/images/section1.jpg') center/cover no-repeat;
+  animation: moveBackground 45s ease-in-out infinite;
+  flex-direction: column;
+}
+
+.photo2 {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('/static/images/section2.jpg') center/cover no-repeat;
+}
+
+.photo3 {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('/static/images/section3.jpg') center/cover no-repeat;
+}
+
+.photo4 {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('/static/images/section4.jpg') center/cover no-repeat;
+}
+
+.photo5 {
+  background: url('/static/images/section5.jpg') center/cover no-repeat;
+}
+
+/* --------------------------------------
+ 7. BUTTON CONTAINER
+-------------------------------------- */
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  margin-top: 20px;
+}
+
+/* --------------------------------------
+ 8. STAR ANIMATIONS
+-------------------------------------- */
+.star-1,
+.star-2,
+.star-3,
+.star-4,
+.star-5,
+.star-6 {
+  position: absolute;
+  filter: drop-shadow(0 0 0 #c9b79c);
+  z-index: -5;
+  transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
+}
+
+.star-1 { top: 20%; left: 20%; width: 1.5rem; transition-delay: 0.05s; }
+.star-2 { top: 45%; left: 45%; width: 1rem; transition-delay: 0.1s; }
+.star-3 { top: 40%; left: 40%; width: 0.5rem; transition-delay: 0.2s; }
+.star-4 { top: 20%; left: 40%; width: 0.75rem; transition-delay: 0.3s; }
+.star-5 { top: 25%; left: 45%; width: 1rem; transition-delay: 0.35s; }
+.star-6 { top: 5%; left: 50%; width: 0.5rem; transition-delay: 0.4s; }
+
+button:hover .star-1 { top: -80%; left: -30%; filter: drop-shadow(0 0 10px #ededed); z-index: 2; }
+button:hover .star-2 { top: -25%; left: 10%; filter: drop-shadow(0 0 10px #d8c9ac); z-index: 2; }
+button:hover .star-3 { top: 55%; left: 25%; filter: drop-shadow(0 0 10px #d8c9ac); z-index: 2; }
+button:hover .star-4 { top: 30%; left: 80%; filter: drop-shadow(0 0 10px #d8c9ac); z-index: 2; }
+button:hover .star-5 { top: 25%; left: 115%; filter: drop-shadow(0 0 10px #d8c9ac); z-index: 2; }
+button:hover .star-6 { top: 5%; left: 60%; filter: drop-shadow(0 0 10px #d8c9ac); z-index: 2; }
+
+.fil0 {
+  fill: #d8c9ac;
+}
+
+/* --------------------------------------
+ 9. CONTACT SECTION
+-------------------------------------- */
+.contact {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('/static/images/section7.jpg') center/cover no-repeat;
+  animation: moveBackground 45s ease-in-out infinite;
+  color: #fff;
+  padding: 3rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-content {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.contact-map {
+  flex: 1;
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 10px;
+}
+
+.address {
+  display: none;
+}
+.contact-form {
+  flex: 1;
+
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.contact-form h2 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.contact-subtitle {
+  font-size: 1rem;
+  color: whitesmoke;
+  margin-bottom: 1.5rem;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  font-family: 'Inter', sans-serif;
+  font-weight: 100;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: whitesmoke;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: background-color 0.5s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgb(198, 198, 198);
+  opacity: 1;
+}
+
+.contact-form textarea {
+  resize: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.contact-form button {
+  width: 50%;
+  margin: 0 auto;
+  display: block;
+}
+
+.contact-form {
+  font-family: 'Lato', sans-serif;
+  font-weight: 100;
+}
+/* --------------------------------------
+ 10. ERROR POPUP
+-------------------------------------- */
+.error-popup {
+  position: fixed;
+  bottom: 20px;
+  left: -300px;
+  background-color: #f44336;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  font-size: 18px;
+  z-index: 9999;
+  min-width: 250px;
+  text-align: center;
+  transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: 0;
+}
+
+.error-popup.show {
+  opacity: 1;
+  left: 20px;
+}
+
+.error-popup.hide {
+  opacity: 0;
+  left: -300px;
+}
+
+/* --------------------------------------
+ 11. CAPTCHA
+-------------------------------------- */
+#captcha-container {
+  display: none;
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#captcha-container.show {
+  display: block;
+  opacity: 1;
+}
+
+footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  background: linear-gradient(to right, #2c2c2c, #3a3a3a);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.3);
+  min-height: 20px;
+}
+
+footer .social_icon,
+footer .menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 6px 0;
+  flex-wrap: wrap;
+}
+
+footer .social_icon li,
+footer .menu li {
+  list-style: none;
+}
+
+footer .social_icon li a {
+  font-size: 1.2em;
+  color: #bbb;
+  margin: 0 6px;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+footer .social_icon li a {
+  font-size: 1.2em;
+  color: #bbb;
+  margin: 10px 10px;
+  display: inline-block;
+  transition: 0.3s ease;
+}
+footer .social_icon li a:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+/* Facebook */
+footer .social_icon li a:hover ion-icon[name="logo-facebook"] {
+  color: #1877f2;
+}
+
+/* Twitter */
+footer .social_icon li a:hover ion-icon[name="logo-twitter"] {
+  color: #1da1f2;
+}
+
+/* LinkedIn */
+footer .social_icon li a:hover ion-icon[name="logo-linkedin"] {
+  color: 	#0077B5;
+}
+
+/* Instagram */
+footer .social_icon li a:hover ion-icon[name="logo-instagram"] {
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  border-radius: 6px;
+}
+
+
+footer .menu li a {
+  font-size: 0.9em;
+  color: #bbb;
+  margin: 0 6px;
+  display: inline-block;
+  transition: 0.3s;
+  text-decoration: none;
+  opacity: 0.75;
+}
+
+footer .menu li a:hover {
+  opacity: 1;
+  color: #fff;
+}
+
+.developersocials {
+  color: #bbb;
+  text-align: center;
+  margin: 10px 10px;
+  font-size: 0.8em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+footer .developersocials a {
+  text-decoration: none;
+  color: #bbb;
+}
+footer .developersocials a:hover {
+  color: #f08080;
+  transition: 0.3s ease;
+}
+
+/* --------------------------------------
+ 12. KEYFRAMES
+-------------------------------------- */
+@keyframes moveBackground {
+  0% { background-position: center top; }
+  50% { background-position: center bottom; }
+  100% { background-position: center top; }
+}
+
+/* --------------------------------------
+   4. SECTION LAYOUT
+/* ----------------- BREAKPOINT: Desktop (1280px +) ----------------- */
+@media (min-width: 1920px) {
+  /* Standardowe ustawienia dla dużych ekranów (np. Full HD i wyżej) */
+  .separator {
+    height: 40px;
+  }
+
+  .section .text-wrapper h2 {
+    font-size: 5rem;
+    margin-bottom: 4rem;
+  }
+
+  .section .text-wrapper p {
+    font-size: 1.7rem;
+    line-height: 5rem;
+    letter-spacing: 3px;
+  }
+
+  .section .text-wrapper {
+    padding: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  /* Contact Section */
+  .contact h2 {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  footer .social_icon li a {
+    font-size: 1.2rem;
+  }
+  footer .social_icon {
+    gap: 0.4rem;
+  }
+
+  .developersocials {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1920px) {
+  /* Ustawienia dla ekranów Full HD (1920x1080, 1366x768) */
+  .separator {
+    height: 30px;
+  }
+
+  .section .text-wrapper h2 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    letter-spacing: 2px;
+  }
+
+  .section .text-wrapper p {
+    font-size: 1.4rem;
+    line-height: 3.5rem;
+    letter-spacing: 2px;
+  }
+
+  .section .text-wrapper {
+    padding: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Contact Section */
+  .contact h2 {
+    font-size: 2.6rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 2.8rem;
+  }
+  footer .social_icon li a {
+    font-size: 1.2rem;
+  }
+  footer .social_icon {
+    gap: 0.4rem;
+  }
+
+  .developersocials {
+    font-size: 0.7rem;
+  }
+}
+
+/* ----------------- BREAKPOINT: HD (1280x720) ----------------- */
+@media (max-width: 1280px) {
+
+  .section .text-wrapper p {
+    font-size: 1.05rem;
+    line-height: 3rem;
+    letter-spacing: 2px;
+  }
+
+  .contact h2 {
+    font-size: 2.3rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-subtitle {
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 1064px) {
+  .section .text, .section .image-container {
+    width: 100%;
+    height: 50%;
+  }
+  .section .text-wrapper h2{
+    margin-bottom: 1.5rem;
+  }
+
+  .section .text-wrapper p {
+    font-size: 1.2rem;
+  }
+
+  .section .text-wrapper {
+    padding: 2rem;
+  }
+}
+
+/* ----------------- BREAKPOINT: Tablet (768px +) ----------------- */
+@media (max-width: 768px) {
+  .contact-map {
+    display: none;
+  }
+  .address {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    margin-top: 1.5rem ;
+    vertical-align: text-bottom;
+  }
+  .location-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: text-bottom;
+  }
+  /* Ustawienia dla tabletów (768px) */
+  .section .text-wrapper h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+  }
+
+  .section .text-wrapper p {
+    font-size: 1.1rem;
+    line-height: 3rem;
+    letter-spacing: 1px;
+  }
+
+  .contact h2 {
+    font-size: 2.1rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .contact-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+/* ----------------- BREAKPOINT: Small Devices (480px +) ----------------- */
+@media (max-width: 560px) {
+  .mainlogo {
+    width: 300px;
+  }
+  .buttons-container {
+    flex-direction: column;
+    margin-top: 60px;
+  }
+  .mainbutton {
+    padding: 0.8rem 1.5rem;
+    background: rgba(66, 66, 66, 0.7);
+    font-size: 1rem;
+    letter-spacing: 1.2px;
+    color: white;
+  }
+
+
+  .contact-form {
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-form form {
+    width: 90%;
+    margin-top: 1.2rem;
+  }
+
+  .contact-form h2 {
+    font-size: 1rem; /* było 1.2em */
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .contact-subtitle {
+    font-size: 0.7rem; /* było 0.8em */
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    font-size: 0.7rem; /* było 0.75em */
+    padding: 8px 10px;
+    margin-bottom: 10px;
+  }
+
+  .contact-form button {
+    width: 80%;
+    font-size: 0.75rem; /* było 0.8em */
+    padding: 8px 10px;
+    margin-top: 10px;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 15px;
+    font-size: 0.7rem; /* było 0.8em */
+  }
+
+  footer .social_icon {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  footer .social_icon li a {
+    font-size: 1rem; /* było 1.2em */
+  }
+
+  footer .developersocials {
+    font-size: 0.7rem;
+    text-align: center;
+  }
+
+  .address {
+    margin-top: 1.5rem;
+    padding: 0 1rem;
+    font-size: 0.75rem;
+  }
+
+  .address img.location-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+  }
+
+  .section .text-wrapper h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .section .text-wrapper p {
+    font-size: 0.8rem;
+    line-height: 2.5rem;
+    letter-spacing: 1px;
+  }
+
+  .contact h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .contact-subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 1.8rem;
+  }
+}
