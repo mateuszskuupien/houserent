@@ -184,25 +184,25 @@ button:hover {
 }
 
 .first {
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('/static/images/section1.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('images/section1.jpg') center/cover no-repeat;
   animation: moveBackground 45s ease-in-out infinite;
   flex-direction: column;
 }
 
 .photo2 {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('/static/images/section2.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('images/section2.jpg') center/cover no-repeat;
 }
 
 .photo3 {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('/static/images/section3.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('images/section3.jpg') center/cover no-repeat;
 }
 
 .photo4 {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('/static/images/section4.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('images/section4.jpg') center/cover no-repeat;
 }
 
 .photo5 {
-  background: url('/static/images/section5.jpg') center/cover no-repeat;
+  background: url('images/section5.jpg') center/cover no-repeat;
 }
 
 /* --------------------------------------
@@ -227,6 +227,8 @@ button:hover {
   position: absolute;
   filter: drop-shadow(0 0 0 #c9b79c);
   z-index: -5;
+  opacity: 0;
+  visibility: hidden;
   transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
 }
 
@@ -236,6 +238,17 @@ button:hover {
 .star-4 { top: 20%; left: 40%; width: 0.75rem; transition-delay: 0.3s; }
 .star-5 { top: 25%; left: 45%; width: 1rem; transition-delay: 0.35s; }
 .star-6 { top: 5%; left: 50%; width: 0.5rem; transition-delay: 0.4s; }
+
+/* Pokazujemy gwiazdki dopiero po najechaniu na przycisk */
+button:hover .star-1, 
+button:hover .star-2, 
+button:hover .star-3, 
+button:hover .star-4, 
+button:hover .star-5, 
+button:hover .star-6 {
+  opacity: 1;
+  visibility: visible;
+}
 
 button:hover .star-1 { top: -80%; left: -30%; filter: drop-shadow(0 0 10px #ededed); z-index: 2; }
 button:hover .star-2 { top: -25%; left: 10%; filter: drop-shadow(0 0 10px #d8c9ac); z-index: 2; }
@@ -247,12 +260,11 @@ button:hover .star-6 { top: 5%; left: 60%; filter: drop-shadow(0 0 10px #d8c9ac)
 .fil0 {
   fill: #d8c9ac;
 }
-
 /* --------------------------------------
  9. CONTACT SECTION
 -------------------------------------- */
 .contact {
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('/static/images/section7.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('images/section7.jpg') center/cover no-repeat;
   animation: moveBackground 45s ease-in-out infinite;
   color: #fff;
   padding: 3rem 1rem;
