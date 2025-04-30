@@ -101,11 +101,12 @@ document.addEventListener("DOMContentLoaded", function () {
     loadReservations();
   });
 
-  // Kliknięcie poza oknem zamyka modal
-  window.addEventListener("click", function (e) {
-    if (e.target === modal) {
-      modal.style.display = "none";
-    }
+  ["click", "touchstart"].forEach((evt) => {
+    window.addEventListener(evt, function (e) {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    });
   });
 
   prevMonthButton.addEventListener("click", () => {
