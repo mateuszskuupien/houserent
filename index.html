@@ -171,14 +171,13 @@
         <div class="contact-form">
           <h2>KONTAKT</h2>
           <p class="contact-subtitle">Masz pytania? Chętnie odpowiemy!</p>
-          <form id="contact-form" method="POST" />
+          <form id="contact-form" method="POST">
             <input type="text" name="name" autocomplete="username" id="name" placeholder="Imię i nazwisko..." required>
             <input type="email" name="email" autocomplete="email" id="email" placeholder="Adres e-mail..." required>
             <textarea name="message" id="message" rows="5" placeholder="Zapytaj o dostępność..." required></textarea>
             <input type="hidden" name="_subject" value="Nowa wiadomość ze strony kontaktowej">
             <button type="submit">WYŚLIJ</button>
           </form>
-        
           <p class="address">
             <img src="static/icons/location.svg" alt="Ikona lokalizacji" class="location-icon">
             ul. Przykładowa 123, 00-001 Warszawa
@@ -186,6 +185,22 @@
         
           <div id="error-popup" class="error-popup">
             <p id="error-message">Proszę wypełnić wszystkie pola poprawnie!</p>
+          </div>
+          <div class="calendar-wrapper">
+            <button id="openCalendar" class="calendar-link">
+              <img src="static/icons/calendar.svg" alt="Ikona kalendarza" style="width: 18px; height: 18px; vertical-align: middle; margin-right: 8px;">
+              Kalendarz
+            </button>
+            <div id="calendarModal" class="calendar-modal">
+              <div class="calendar-content">
+                <div class="calendar-controls">
+                  <button id="prevMonth">«</button>
+                  <h3 id="monthYear"></h3>
+                  <button id="nextMonth">»</button>
+                </div>
+                <div id="calendar" class="calendar-grid"></div>
+              </div>
+            </div>
           </div>
         </div>
     </section>
@@ -199,6 +214,5 @@
       </ul>
       <p class="developersocials">&copy; 2025 bachuldomki | Developed by <a href="https://linktr.ee/mateuszskuupien" target="_blank">Mateusz Skupień</a></p>
     </footer>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>

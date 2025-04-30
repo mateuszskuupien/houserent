@@ -82,10 +82,13 @@ button:hover {
 .section {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   width: 100%;
   height: 100%;
   flex-wrap: wrap;
+}
+.contact {
+  overflow: hidden;
 }
 .section-heading {
   display: inline-block;
@@ -281,7 +284,6 @@ button:hover .star-6 { top: 5%; left: 60%; filter: drop-shadow(0 0 10px #d8c9ac)
   max-width: 1200px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   border-radius: 15px;
-  overflow: hidden;
 }
 
 .contact-map {
@@ -516,6 +518,110 @@ footer .developersocials a:hover {
   100% { background-position: center top; }
 }
 
+
+.calendar-wrapper {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.calendar-link {
+  font-family: 'Inter', sans-serif;
+  font-weight: 100;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 1rem 3rem;
+  background: rgba(66, 66, 66, 0.7);
+  font-size: 1.125rem;
+  letter-spacing: 1.2px;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  position: relative;
+  margin-top: 1.5rem;
+}
+#openCalendar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  padding: 0.8rem 3rem;
+}
+.calendar-link:hover {
+  background: #1f1b18;
+  transition: background-color 0.8s ease;
+}
+
+.calendar-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-content {
+  background-color: #1a1a1a;
+  color: whitesmoke;
+  padding: 25px;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.calendar-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.calendar-controls button {
+  background: rgba(66,66,66,0.7);
+  border: none;
+  padding: 6px 12px;
+  font-size: 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 25%;
+}
+
+.calendar-controls button:hover {
+  background-color: #1f1b18;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.calendar-grid .day {
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #2f4f2f; /* ciemna zieleń = wolne */
+  color: whitesmoke;
+  font-family: 'Inter', sans-serif;
+}
+
+.calendar-grid .booked {
+  background-color: #7a2525; /* ciemna czerwień */
+  color: whitesmoke;
+}
+
+.calendar-grid .past {
+  background-color: #333; 
+  color: #777;
+}
+
 /* --------------------------------------
    4. SECTION LAYOUT
 /* ----------------- BREAKPOINT: Desktop (1280px +) ----------------- */
@@ -743,7 +849,6 @@ footer .developersocials a:hover {
     width: 80%;
     font-size: 0.75rem; /* było 0.8em */
     padding: 8px 10px;
-    margin-top: 10px;
   }
 
   footer {
@@ -800,5 +905,37 @@ footer .developersocials a:hover {
   .contact-subtitle {
     font-size: 0.8rem;
     margin-bottom: 1.8rem;
+  }
+  .calendar-content {
+    padding: 12px;
+    width: 96%;
+    max-width: 320px;
+  }
+
+  .calendar-controls button {
+    width: 20%;
+    font-size: 13px;
+    padding: 2px 3px;
+  }
+
+  #monthYear {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .calendar-grid {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 4px;
+    width: 100%;
+  }
+
+  .calendar-grid .day,
+  .calendar-grid .booked,
+  .calendar-grid .past {
+    padding: 6px 2px;
+    font-size: 11px;
+  }
+  .calendar-controls{
+    align-items: center;
   }
 }
