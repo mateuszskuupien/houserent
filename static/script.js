@@ -244,3 +244,77 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+document.addEventListener("DOMContentLoaded", function () {
+  // Modal Regulaminu
+  const regulaminModal = document.getElementById("regulamin-modal");
+  const regulaminModalContent = regulaminModal.querySelector(".modal-content");
+  const openRegulaminBtn = document.getElementById("open-regulamin");
+
+  // Po kliknięciu na link otwieramy modal i ładujemy regulamin
+  openRegulaminBtn.addEventListener("click", function (event) {
+    event.preventDefault(); // Zatrzymujemy domyślne działanie linku (przewijanie)
+
+    // Ładowanie zawartości regulaminu
+    fetch("regulamin.html")
+      .then((response) => {
+        if (!response.ok)
+          throw new Error("Nie udało się załadować regulaminu.");
+        return response.text();
+      })
+      .then((html) => {
+        regulaminModalContent.innerHTML = html; // Wstawiamy załadowaną zawartość do modalu
+        regulaminModal.style.display = "flex"; // Pokazujemy modal
+      })
+      .catch((error) => {
+        regulaminModalContent.innerHTML = "<p>Błąd ładowania regulaminu.</p>"; // W razie błędu wyświetlamy komunikat
+        regulaminModal.style.display = "flex"; // Pokazujemy modal w razie błędu
+      });
+  });
+
+  // Zamknięcie modalu Regulaminu po kliknięciu poza oknem modalu
+  window.addEventListener("click", function (event) {
+    if (event.target === regulaminModal) {
+      regulaminModal.style.display = "none"; // Ukrywamy modal
+    }
+  });
+
+  // Modal Polityki Prywatności
+  const politykaModal = document.getElementById("polityka-modal");
+  const politykaModalContent = politykaModal.querySelector(".modal-content");
+  const openPolitykaBtn = document.getElementById("open-polityka");
+
+  // Po kliknięciu na link otwieramy modal i ładujemy politykę prywatności
+  openPolitykaBtn.addEventListener("click", function (event) {
+    event.preventDefault(); // Zatrzymujemy domyślne działanie linku (przewijanie)
+
+    // Ładowanie zawartości polityki prywatności
+    fetch("polityka.html")
+      .then((response) => {
+        if (!response.ok)
+          throw new Error("Nie udało się załadować polityki prywatności.");
+        return response.text();
+      })
+      .then((html) => {
+        politykaModalContent.innerHTML = html; // Wstawiamy załadowaną zawartość do modalu
+        politykaModal.style.display = "flex"; // Pokazujemy modal
+      })
+      .catch((error) => {
+        politykaModalContent.innerHTML =
+          "<p>Błąd ładowania polityki prywatności.</p>"; // W razie błędu wyświetlamy komunikat
+        politykaModal.style.display = "flex"; // Pokazujemy modal w razie błędu
+      });
+  });
+
+  // Zamknięcie modalu Polityki Prywatności po kliknięciu poza oknem modalu
+  window.addEventListener("click", function (event) {
+    if (event.target === politykaModal) {
+      politykaModal.style.display = "none"; // Ukrywamy modal
+    }
+  });
+});
+document.querySelectorAll(".accordion-toggle").forEach((button) => {
+  button.addEventListener("click", () => {
+    const item = button.parentElement;
+    item.classList.toggle("active");
+  });
+});

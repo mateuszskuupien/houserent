@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bachuldomki</title>
+    <meta name="format-detection" content="telephone=no">
+    <title>Wichrowy Domek</title>
     <link rel="icon" type="image/x-icon" href="static/icons/favicon.ico">
     <link rel="stylesheet" href="static/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -205,6 +206,41 @@
         </div>
     </section>
     <button id="scrollToTopBtn" class="scrollToTopBtn">↑</button>
+
+    <section class="faq-section reveal">
+      <h2 class="section-heading">FAQ – Często zadawane pytania</h2>
+    
+      <div class="accordion-wrapper">
+        <div class="accordion-item">
+          <button class="accordion-toggle">Jakie udogodnienia są dostępne w domku?</button>
+          <div class="accordion-content">
+            <p>W domku znajduje się w pełni wyposażona kuchnia, Wi-Fi, kominek, taras z grillem oraz miejsce na ognisko.</p>
+          </div>
+        </div>
+    
+        <div class="accordion-item">
+          <button class="accordion-toggle">Jak się z nami skontaktować?</button>
+          <div class="accordion-content">
+            <p>Możesz użyć formularza kontaktowego powyżej lub zadzwonić pod numer +48 123 456 789.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-toggle">Czy akceptujemy zwierzęta?</button>
+          <div class="accordion-content">
+            <p>Tak, akceptujemy zwierzęta domowe po wcześniejszym uzgodnieniu.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-toggle">Jak wygląda proces rezerwacji?</button>
+          <div class="accordion-content">
+            <p>Rezerwacji można dokonać przez nasz kalendarz online. Po wybraniu terminu otrzymasz potwierdzenie mailowe wraz ze szczegółami płatności.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer>
       <ul class="social_icon">
         <li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
@@ -212,7 +248,21 @@
         <li><a href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
         <li><a href="#"><ion-icon name="logo-linkedin"></ion-icon></a></li>
       </ul>
-      <p class="developersocials">&copy; 2025 bachuldomki | Developed by <a href="https://linktr.ee/mateuszskuupien" target="_blank">Mateusz Skupień</a></p>
+      <!-- NOWY LINK DO REGULAMINU -->
+      <p class="footer-links">
+        <a href="#" id="open-regulamin">Regulamin</a>
+        <a href="#" id="open-polityka">Polityka Prywatności</a>
+      </p>
+      <p class="developersocials">
+        &copy; 2025 Wichrowy Domek | Developed by
+        <a href="https://linktr.ee/mateuszskuupien" target="_blank">Mateusz Skupień</a>
+      </p>
     </footer>
+    <div id="regulamin-modal" class="modal" style="display: none;">
+      <div class="modal-content"></div>
+    </div>
+    <div id="polityka-modal" class="modal" style="display: none;">
+      <div class="modal-content"></div>
+    </div>
 </body>
 </html>

@@ -1,0 +1,204 @@
+/* STYL MODALU */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Półprzezroczyste tło */
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Zapobiegamy przewijaniu tła */
+}
+
+/* Kontener z zawartością modalu */
+.modal-content {
+  background-color: #1a1a1a;
+  color: whitesmoke;
+  padding: 30px;
+  width: 90%;
+  max-width: 900px; /* Maksymalna szerokość kontenera */
+  max-height: 80%;
+  overflow-y: auto; /* Dodajemy pasek przewijania, gdy treść jest za długa */
+  border-radius: 12px;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  text-align: justify; /* Justowanie tekstu */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Zawartość polityki prywatności */
+.polityka-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 1rem;
+}
+
+/* Kontener z treścią polityki prywatności */
+.polityka-content {
+  background-color: #1a1a1a;
+  color: whitesmoke;
+  font-family: 'Lato', sans-serif;
+  padding: 2rem;
+  max-width: 800px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  line-height: 1.6;
+  font-weight: 100;
+  text-align: justify; /* Justowanie tekstu */
+}
+
+/* Nagłówek H2 w polityce prywatności */
+.polityka-content h2 {
+  font-weight: 100;
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: whitesmoke;
+  letter-spacing: 1px;
+  text-align: center; /* Wyśrodkowanie nagłówka */
+}
+
+/* Nagłówek H3 w polityce prywatności */
+.polityka-content h3 {
+  font-weight: 100;
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: whitesmoke;
+  text-align: center; /* Wyśrodkowanie nagłówka */
+}
+
+/* Listy w polityce prywatności - bez kropek */
+.polityka-content ul {
+  padding-left: 0;
+  list-style-type: none; /* Usunięcie kropek */
+  margin-bottom: 1rem;
+  text-align: justify; /* Justowanie listy */
+}
+
+/* Elementy listy */
+.polityka-content ul li {
+  margin-bottom: 0.5rem;
+}
+
+/* Paragrafy w polityce prywatności */
+.polityka-content p {
+  margin-top: 1rem;
+  text-align: justify;
+}
+
+/* Responsywność */
+@media (max-width: 1200px) {
+  /* Na dużych ekranach (laptopy) */
+  .modal-content {
+    padding: 20px;
+    font-size: 1rem;
+  }
+  .polityka-content {
+    padding: 1.5rem;
+    max-width: 700px;
+  }
+  .polityka-content h2 {
+    font-size: 1.5rem;
+  }
+  .polityka-content h3 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 992px) {
+  /* Na średnich ekranach (mniejsze laptopy, większe tablety) */
+  .modal-content {
+    font-size: 0.95rem;
+    padding: 15px;
+  }
+  .polityka-content {
+    padding: 1.2rem;
+    max-width: 650px;
+  }
+  .polityka-content h2 {
+    font-size: 1.4rem;
+  }
+  .polityka-content h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Na tabletach */
+  .modal-content {
+    font-size: 0.9rem;
+    padding: 12px;
+  }
+  .polityka-content {
+    padding: 1rem;
+    max-width: 600px;
+  }
+  .polityka-content h2 {
+    font-size: 1.3rem;
+  }
+  .polityka-content h3 {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Na małych tabletach i telefonach */
+  .modal-content {
+    font-size: 0.85rem;
+    padding: 10px;
+  }
+  .polityka-content {
+    padding: 0.8rem;
+    max-width: 100%;
+  }
+  .polityka-content h2 {
+    font-size: 1.2rem;
+  }
+  .polityka-content h3 {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 425px) {
+  /* Na małych telefonach */
+  .modal-content {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+  .polityka-content {
+    padding: 0.6rem;
+    max-width: 100%;
+  }
+  .polityka-content h2 {
+    font-size: 1.1rem;
+  }
+  .polityka-content h3 {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 320px) {
+  /* Na bardzo małych telefonach */
+  .modal-content {
+    font-size: 0.75rem;
+    padding: 6px;
+  }
+  .polityka-content {
+    padding: 0.5rem;
+    max-width: 100%;
+  }
+  .polityka-content h2 {
+    font-size: 1rem;
+  }
+  .polityka-content h3 {
+    font-size: 0.75rem;
+  }
+}

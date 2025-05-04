@@ -395,21 +395,6 @@ button:hover .star-6 { top: 5%; left: 60%; filter: drop-shadow(0 0 10px #d8c9ac)
   left: -300px;
 }
 
-/* --------------------------------------
- 11. CAPTCHA
--------------------------------------- */
-#captcha-container {
-  display: none;
-  margin-top: 20px;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-#captcha-container.show {
-  display: block;
-  opacity: 1;
-}
-
 footer {
   display: flex;
   justify-content: space-around;
@@ -497,7 +482,7 @@ footer .menu li a:hover {
   color: #bbb;
   text-align: center;
   margin: 10px 10px;
-  font-size: 0.8em;
+  font-size: 0.9rem;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 footer .developersocials a {
@@ -508,7 +493,20 @@ footer .developersocials a:hover {
   color: #f08080;
   transition: 0.3s ease;
 }
+.footer-links {
+  font-size: 0.9rem;
+  display: flex;
+  text-align: center;
+  margin: 5px 0;
+  gap: 1rem;
+}
 
+.footer-links a {
+  font-size: 0.9rem;
+  color: #bbb;
+  text-decoration: none;
+  opacity: 0.8;
+}
 /* --------------------------------------
  12. KEYFRAMES
 -------------------------------------- */
@@ -623,6 +621,78 @@ footer .developersocials a:hover {
 }
 
 /* --------------------------------------
+  13. FAQ SECTION
+-------------------------------------- */
+.faq-section .section-heading {
+  text-transform: none;
+}
+
+.faq-section {
+  padding: 5rem 2rem;
+  background: linear-gradient(to bottom, #555555, #3f3f3f);
+  color: whitesmoke;
+  text-align: center;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.3); /* cień wewnętrzny góra/dół */
+}
+
+.accordion-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.accordion-item {
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #333;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 6px 20px rgba(0, 0, 0, 0.2); /* dodane dwa poziomy cieni */
+  transition: box-shadow 0.3s ease, transform 0.4s ease;
+}
+
+.accordion-item:hover {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.4),
+    0 10px 25px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px); /* lekki podskok na hover */
+}
+
+.accordion-toggle {
+  width: 100%;
+  text-align: left;
+  color: whitesmoke;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #444;
+  border: none;
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.05); /* delikatna linia u dołu */
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 1.5rem;
+  background-color: #333;
+  transition: max-height 0.5s ease, padding 0.3s ease;
+  color: inherit;
+}
+
+.accordion-content p {
+  margin: 1rem 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #ddd;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 200px;
+  padding: 1rem 1.5rem;
+}
+
+/* --------------------------------------
    4. SECTION LAYOUT
 /* ----------------- BREAKPOINT: Desktop (1280px +) ----------------- */
 @media (min-width: 1920px) {
@@ -711,7 +781,7 @@ footer .developersocials a:hover {
   }
 
   .developersocials {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
   }
 }
 
@@ -792,6 +862,13 @@ footer .developersocials a:hover {
     font-size: 1.1rem;
     margin-bottom: 2.5rem;
   }
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 15px;
+    font-size: 0.7rem; /* było 0.8em */
+  }
 }
 
 /* ----------------- BREAKPOINT: Small Devices (480px +) ----------------- */
@@ -851,14 +928,6 @@ footer .developersocials a:hover {
     padding: 8px 10px;
   }
 
-  footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px 15px;
-    font-size: 0.7rem; /* było 0.8em */
-  }
-
   footer .social_icon {
     display: flex;
     justify-content: center;
@@ -869,6 +938,9 @@ footer .developersocials a:hover {
     font-size: 1rem; /* było 1.2em */
   }
 
+  .footer-links a {
+    font-size: 0.7rem;
+  }
   footer .developersocials {
     font-size: 0.7rem;
     text-align: center;
